@@ -8,7 +8,9 @@ import pathlib
 import numpy as np
 from src.wrappers import plot_tree, plot_forest, plot_tree_and_forest
 
+# Get Model to visualize
 
+# Define Experiment variables
 experiment_id = "main_experiment"
 site_id = "valencia"
 model_type = "Random Forest" # Balanced Random Forest, Weighted Random Forest, Random Forest
@@ -20,27 +22,27 @@ iteration_idx = 2
 title = f"{model_type}_{sampling_strategy}_{sampling_size}_{tuning_strategy}_{site_id}_iter{iteration_idx}"
 out_dir = f"../sarFlood/data/experiments/{experiment_id}/plots/trees/"
 pathlib.Path(out_dir).mkdir(parents=True, exist_ok=True)
+print("Experiment config:", title)
 
+# Load model
 model_path = f"../sarFlood/data/experiments/{experiment_id}/models/{model_type}_{sampling_strategy}_{sampling_size}_{tuning_strategy}_{site_id}_iter{iteration_idx}.joblib"
 model = joblib.load(model_path)
 print("Loaded model:", model)
-
-
+print("Model parameters:", model.get_params())
+print("Features:", model.feature_names_in_)
 
 
 #%% Visualize tree
 # Get the first tree to visualize
 
-plot_tree(model, tree_idx=0, figsize=(12, 8), out_dir=out_dir)
+plot_tree(model, tree_idx=0, figsize=(12, 8), out_dir=out_dir, title=title)
 
 # %% Visualize forest
 
-plot_forest(model, n_trees_to_plot=16, figsize=(12, 8), out_dir=out_dir)
+plot_forest(model, n_trees_to_plot=16, figsize=(12, 8), out_dir=out_dir, title=title)
 
-# %%
-from src.vis_params import CMAP
+# %% Visualize tree and forest in one figure
 
-# Visualize tree and forest in one figure
 plot_tree_and_forest(model, tree_idx=0, n_trees_to_plot=16, figsize=(12, 8), out_dir=out_dir, title=title)
 
 # %%

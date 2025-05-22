@@ -3,6 +3,7 @@
 Minimal wrappers for visualizing and comparing scikit-learn random forest models trained for flood mapping, using [pybaobabdt](https://gitlab.tue.nl/20040367/pybaobab).
 
 **Python 3.8 required** :snake:
+**Note:** Only models trained with scikit-learn == 1.3 are guaranteed to plot correctly.
 
 ---
 
@@ -27,11 +28,11 @@ Minimal wrappers for visualizing and comparing scikit-learn random forest models
 
 ---
 
-## Usage
+## Example
 
-See `visualize_model.py` and `compare_models.py` for example scripts to visualize and compare models.
+### Random Forest trained on random samples
 
-**Note:** Only models trained with scikit-learn <=1.3 are guaranteed to plot correctly.
+### Random Forest trained on balanced samples
 
 ---
 

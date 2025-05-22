@@ -28,13 +28,16 @@ def plot_tree(model, tree_idx=0, figsize=(12, 8), out_dir=None, title=None):
     for patch in ax.patches:
         patch.set_alpha(1)
 
+    if title:
+        plt.suptitle(f"Tree {tree_idx} \n{title}")
+
     plt.tight_layout()
     # Save and show
     if out_dir:
         out_path = pathlib.Path(out_dir) / f"tree_{tree_idx}_{title}.png"
         plt.savefig(out_path, format='png', dpi=300, transparent=True)
-    if title:
-        plt.suptitle(f"Tree {tree_idx} \n{title}")
+        print(f"Saved to {out_path}")
+
     plt.show()
 
 def plot_forest(model, n_trees_to_plot=16, figsize=(12, 8), out_dir=None, title=None):
@@ -79,6 +82,7 @@ def plot_forest(model, n_trees_to_plot=16, figsize=(12, 8), out_dir=None, title=
     if out_dir:
         out_path = pathlib.Path(out_dir) / f"forest_{n_trees_to_plot}_{title}.png"
         fig.savefig(out_path, format='png', dpi=300)
+        print(f"Saved to {out_path}")
     plt.show()
 
 def plot_tree_and_forest(model, tree_idx=0, n_trees_to_plot=16, figsize=(16, 12), out_dir=None, title=None):
@@ -139,4 +143,5 @@ def plot_tree_and_forest(model, tree_idx=0, n_trees_to_plot=16, figsize=(16, 12)
     if out_dir:
         out_path = pathlib.Path(out_dir) / f"tree_and_forest_{title}.png"
         fig.savefig(out_path, format='png', dpi=300)
+        print(f"Saved to {out_path}")
     plt.show()

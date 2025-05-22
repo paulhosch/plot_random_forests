@@ -1,0 +1,6 @@
+matplotlib
+numpy
+joblib
+scikit-learn
+pygraphviz
+git+https://github.com/paulhosch/pybaobab-fork-fork.git
